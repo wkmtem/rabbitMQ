@@ -19,7 +19,7 @@ public class Send {
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
 
         // 消息内容
-        String message = "Hello World!";
+        String message = "No.2 ==> Hello World!";
         channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
         System.out.println(" [x] Sent '" + message + "'");
 
