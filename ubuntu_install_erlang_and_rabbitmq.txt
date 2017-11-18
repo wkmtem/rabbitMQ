@@ -1,0 +1,48 @@
+1、erlang
+	sudo apt-get install erlang
+
+2、ubuntu14安装rabbitmq
+	1、修改 /etc/apt/sources.list文件，最后一行加上：
+		deb http://www.rabbitmq.com/debian/ testing main
+	2、命令行先后执行以下两句加rabbitmq的公钥为可信，以免稍后的安全提示（可选，建议弄一下，仅洁僻罢了）
+		wget https://www.rabbitmq.com/rabbitmq-signing-key-public.asc
+		sudo apt-key add rabbitmq-signing-key-public.asc
+	3、安装
+		apt-get update
+		sudo apt-get install rabbitmq-server
+
+3、ubuntu16安装rabbitmq
+	1、添加源 新增公钥（不加会有警告）更新源 安装rabbitmq-server
+		echo 'deb http://www.rabbitmq.com/debian/ testing main' | sudo tee /etc/apt/sources.list.d/rabbitmq.list
+		wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add -
+		sudo apt-get update
+		sudo apt-get install rabbitmq-server
+
+4、打开管理页面
+	sudo rabbitmq-plugins enable rabbitmq_management
+
+5、新增管理员用户
+	默认root用户密码(只可rabbitmq server本机登录)：guest guest
+	sudo rabbitmqctl add_user admin admin
+	sudo rabbitmqctl set_user_tags admin administrator
+	5种角色：超级管理员administrator、监控者monitoring、策略定制者policymaker、普通管理者management、其他(不能登录控制台，普通的生产者和消费者)
+
+6、登录管理页面
+	http://127.0.0.1:15672
+
+7、管理页面添加Virtual Hosts
+	1、Name: /host_name(相当于创建一个库)
+	2、点击创建的库名，添加用户、权限
+		User 选择用户
+		Set Permission
+
+8、mq启动停止状态
+	invoke-rc.d rabbitmq-server start
+	invoke-rc.d rabbitmq-server stop
+	invoke-rc.d rabbitmq-server status
+
+9、其他查看命令
+	1、查看安装的插件
+		sudo rabbitmqctl list_users
+	2、查看用户
+		sudo rabbitmqctl list_users
