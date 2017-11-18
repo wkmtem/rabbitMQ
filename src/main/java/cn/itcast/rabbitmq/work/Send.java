@@ -5,6 +5,9 @@ import cn.itcast.rabbitmq.util.ConnectionUtil;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 
+/**
+ * 一个消息，只能被一个消费者获取，适合操作数据库
+ */
 public class Send {
 
     private final static String QUEUE_NAME = "test_queue_work";
