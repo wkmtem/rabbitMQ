@@ -5,6 +5,9 @@ import cn.itcast.rabbitmq.util.ConnectionUtil;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 
+/**
+ * 路由模式
+ */
 public class Send {
 
     private final static String EXCHANGE_NAME = "test_exchange_direct";
@@ -14,11 +17,12 @@ public class Send {
         Connection connection = ConnectionUtil.getConnection();
         Channel channel = connection.createChannel();
 
-        // 声明exchange
+        // 声明exchange交换机
         channel.exchangeDeclare(EXCHANGE_NAME, "direct");
 
         // 消息内容
         String message = "Hello World!";
+        // 发送消息到交换机，指定路由键routingKey名称
         channel.basicPublish(EXCHANGE_NAME, "key2", null, message.getBytes());
         System.out.println(" [x] Sent '" + message + "'");
 

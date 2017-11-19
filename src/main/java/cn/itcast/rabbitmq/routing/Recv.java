@@ -21,8 +21,9 @@ public class Recv {
         // 声明队列
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
 
-        // 绑定队列到交换机
+        // 绑定队列到交换机，指定路由键routingKey名称。多个路由键，写多个
         channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, "key");
+        channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, "key2");
 
         // 同一时刻服务器只会发一条消息给消费者
         channel.basicQos(1);

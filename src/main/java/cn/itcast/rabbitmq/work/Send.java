@@ -6,7 +6,7 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 
 /**
- * 一个消息，只能被一个消费者获取，适合操作数据库
+ * work模式：一个消息，只能被一个消费者获取，适合操作数据库
  */
 public class Send {
 

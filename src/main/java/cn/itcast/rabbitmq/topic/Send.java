@@ -5,6 +5,11 @@ import cn.itcast.rabbitmq.util.ConnectionUtil;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 
+/**
+ * routingKey通配符模式: 包含了路由模式
+ * xxx.#, #.xxx: 匹配一个或多个词(分隔符".")
+ * xxx.*.*, xxx.*.yyy: 只匹配一个词
+ */
 public class Send {
 
     private final static String EXCHANGE_NAME = "test_exchange_topic";

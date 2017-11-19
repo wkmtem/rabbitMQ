@@ -24,7 +24,7 @@ public class Recv2 {
         // 绑定队列到交换机
         channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, "");
 
-        // 同一时刻服务器只会发一条消息给消费者
+        // 同一时刻服务器只会发一条消息给消费者，直到ack。
         channel.basicQos(1);
 
         // 定义队列的消费者

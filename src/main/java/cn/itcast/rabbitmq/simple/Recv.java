@@ -21,8 +21,8 @@ public class Recv {
 
         // 定义队列的消费者
         QueueingConsumer consumer = new QueueingConsumer(channel);
-        // 监听队列
-        channel.basicConsume(QUEUE_NAME, true, consumer);
+        // 监听队列，自动返回完成状态
+        channel.basicConsume(QUEUE_NAME, true, consumer); // true:自动, false:手动
 
         // 获取消息
         while (true) {
