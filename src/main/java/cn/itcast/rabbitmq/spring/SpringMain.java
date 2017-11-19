@@ -6,8 +6,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringMain {
     public static void main(final String... args) throws Exception {
-        AbstractApplicationContext ctx = new ClassPathXmlApplicationContext(
-                "classpath:spring/rabbitmq-context.xml");
+        AbstractApplicationContext ctx = 
+        		new ClassPathXmlApplicationContext("classpath:spring/rabbitmq-context.xml");
         //RabbitMQ模板
         RabbitTemplate template = ctx.getBean(RabbitTemplate.class);
         //发送消息

@@ -2,7 +2,6 @@ package cn.itcast.rabbitmq.spring;
 
 /**
  * 消费者
- * @author zhijun
  *
  */
 public class Foo {
